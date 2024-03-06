@@ -3,10 +3,14 @@ let membrosSorteados = document.getElementById("lista-sorteio");
 let numeroSorteios = 0;
 
 function adicionar(){
+    if(document.getElementById('nome-amigo').value==""){
+
+    }else{
     membros.push(document.getElementById('nome-amigo').value);
     document.getElementById('nome-amigo').value = "";
     console.log(membros);
     document.getElementById("lista-amigos").textContent = membros
+    }
 }
 
 function reiniciar(){
