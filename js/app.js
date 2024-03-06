@@ -4,13 +4,17 @@ let numeroSorteios = 0;
 
 function adicionar(){
     if(document.getElementById('nome-amigo').value==""){
-
+        alert("Informe um nome de participante!")
     }else{
-    membros.push(document.getElementById('nome-amigo').value);
-    document.getElementById('nome-amigo').value = "";
-    console.log(membros);
-    document.getElementById("lista-amigos").textContent = membros
+    if(membros.includes(document.getElementById('nome-amigo').value)){
+        alert("O nome digitado já está na lista");
+        return;
     }
+        membros.push(document.getElementById('nome-amigo').value);
+        document.getElementById('nome-amigo').value = "";
+        console.log(membros);
+        document.getElementById("lista-amigos").textContent = membros
+        }
 }
 
 function reiniciar(){
@@ -21,18 +25,22 @@ function reiniciar(){
 }
 
 function sortear(){
-    numeroSorteios++;
-    if(numeroSorteios>1){
+    if(membros.length<4){
+        alert("Insira o nome de no mínimo 4 participantes");
+        return;
+    }
+        numeroSorteios++;
+        if(numeroSorteios>1){
 
-    }else{
-    embaralhar(membros);
-    console.log(membros);
-    for( i = 0; i < membros.length; i++){
-        if(i+1 == membros.length){
-            membrosSorteados.innerHTML = membrosSorteados.innerHTML + membros[i] + "-->" + membros[0]+'<br>';
         }else{
-        membrosSorteados.innerHTML = membrosSorteados.innerHTML + membros[i] + "-->" + membros[i+1]+'<br>';
-    }}}
+        embaralhar(membros);
+        console.log(membros);
+        for( i = 0; i < membros.length; i++){
+            if(i+1 == membros.length){
+                membrosSorteados.innerHTML = membrosSorteados.innerHTML + membros[i] + "-->" + membros[0]+'<br>';
+            }else{
+            membrosSorteados.innerHTML = membrosSorteados.innerHTML + membros[i] + "-->" + membros[i+1]+'<br>';
+        }}}
 }
 
 function embaralhar(lista) {
